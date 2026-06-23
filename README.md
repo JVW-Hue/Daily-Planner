@@ -10,25 +10,35 @@ A simple, clean daily planner web app that runs entirely in your browser.
 - **Date Navigation** — Move between days with arrow buttons or jump back to today
 - **Local Storage** — All your data saves automatically in your browser
 
-## How to Clone
+## How to Install
 
-```bash
-git clone <your-repo-url>
-cd "Daily Planner"
-```
+### Option 1: Run Directly (No Install Needed)
 
-Then open `index.html` in your browser.
+1. Download or clone this repository
+2. Double-click `index.html` — it opens in your browser and works immediately
+3. That's it, no server or build step required
+
+### Option 2: Install as a Desktop App
+
+1. Open `index.html` in **Microsoft Edge** or **Google Chrome**
+2. Click the **three dots menu** (top right) → **Apps** → **Install Daily Planner**
+3. The app now appears in your Start Menu / Taskbar like a native app
+
+### Option 3: Add to Phone Home Screen
+
+1. Open the hosted URL in your phone's browser
+2. Tap **Share** → **Add to Home Screen**
+3. The app opens full-screen from your home screen
 
 ## How to Use
 
-1. Open `index.html` in any modern browser (Chrome, Firefox, Edge, etc.)
-2. Use the **<** and **>** arrows to navigate between days
-3. Click **Today** to jump back to the current date
-4. Type a task in the input box, pick a priority, and press **+** or hit Enter
-5. Click a checkbox to mark a task as done
-6. Click the **x** on a task to delete it
-7. Fill in schedule time blocks by clicking on any hour row
-8. Write notes in the Notes section at the bottom
+1. Use the **<** and **>** arrows to navigate between days
+2. Click **Today** to jump back to the current date
+3. Type a task in the input box, pick a priority, and press **+** or hit Enter
+4. Click a checkbox to mark a task as done
+5. Click the **x** on a task to delete it
+6. Fill in schedule time blocks by clicking on any hour row
+7. Write notes in the Notes section at the bottom
 
 ## Important: Do Not Clear Your Browser Cache
 
