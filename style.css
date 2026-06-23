@@ -5,33 +5,59 @@
 }
 
 :root {
-    --bg: #f0f2f5;
+    --bg: #f4f6fb;
     --card-bg: #ffffff;
-    --text: #1a1a2e;
-    --text-muted: #6b7280;
-    --primary: #4f46e5;
-    --primary-hover: #4338ca;
-    --border: #e5e7eb;
+    --text: #1e1e2f;
+    --text-muted: #7c8298;
+    --primary: #6366f1;
+    --primary-hover: #4f46e5;
+    --primary-light: #eef2ff;
+    --border: #e4e7f0;
     --high: #ef4444;
+    --high-bg: #fef2f2;
     --medium: #f59e0b;
+    --medium-bg: #fffbeb;
     --low: #22c55e;
+    --low-bg: #f0fdf4;
     --schedule-alt: #f9fafb;
-    --shadow: 0 1px 3px rgba(0,0,0,0.08), 0 1px 2px rgba(0,0,0,0.06);
-    --shadow-lg: 0 4px 12px rgba(0,0,0,0.1);
-    --radius: 10px;
+    --shadow: 0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
+    --shadow-md: 0 4px 16px rgba(0,0,0,0.08);
+    --radius: 14px;
+    --radius-sm: 10px;
+    --header-gradient: linear-gradient(135deg, #6366f1, #8b5cf6);
 }
 
 body {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
     background: var(--bg);
     color: var(--text);
     min-height: 100vh;
+    transition: background 0.3s, color 0.3s;
+}
+
+/* Dark Mode */
+body.dark {
+    --bg: #0f1117;
+    --card-bg: #1a1d2e;
+    --text: #e4e6f0;
+    --text-muted: #8b8fa8;
+    --primary: #818cf8;
+    --primary-hover: #6366f1;
+    --primary-light: #1e2040;
+    --border: #2a2d3e;
+    --high-bg: #2a1520;
+    --medium-bg: #2a2210;
+    --low-bg: #102a1a;
+    --schedule-alt: #151828;
+    --shadow: 0 1px 3px rgba(0,0,0,0.3);
+    --shadow-md: 0 4px 16px rgba(0,0,0,0.4);
+    --header-gradient: linear-gradient(135deg, #4f46e5, #7c3aed);
 }
 
 .app {
-    max-width: 1100px;
+    max-width: 1140px;
     margin: 0 auto;
-    padding: 20px;
+    padding: 24px;
 }
 
 /* Header */
@@ -39,11 +65,13 @@ header {
     display: flex;
     align-items: center;
     gap: 16px;
-    margin-bottom: 24px;
-    padding: 16px 24px;
-    background: var(--card-bg);
+    margin-bottom: 28px;
+    padding: 18px 28px;
+    background: var(--header-gradient);
     border-radius: var(--radius);
-    box-shadow: var(--shadow);
+    box-shadow: var(--shadow-md);
+    color: white;
+    position: relative;
 }
 
 .date-display {
@@ -54,48 +82,70 @@ header {
 }
 
 .date-display h1 {
-    font-size: 1.4rem;
+    font-size: 1.5rem;
     font-weight: 700;
+    letter-spacing: -0.3px;
 }
 
 .date-display span {
     font-size: 0.85rem;
-    color: var(--text-muted);
+    opacity: 0.85;
 }
 
 .nav-btn {
     width: 40px;
     height: 40px;
-    border: 1px solid var(--border);
-    background: var(--card-bg);
-    border-radius: 8px;
-    font-size: 1.2rem;
+    border: 2px solid rgba(255,255,255,0.25);
+    background: rgba(255,255,255,0.1);
+    border-radius: 10px;
+    font-size: 1.1rem;
     cursor: pointer;
-    transition: all 0.15s;
-    color: var(--text);
+    transition: all 0.2s;
+    color: white;
+    backdrop-filter: blur(4px);
 }
 
 .nav-btn:hover {
-    background: var(--bg);
-    border-color: var(--primary);
-    color: var(--primary);
+    background: rgba(255,255,255,0.25);
+    border-color: rgba(255,255,255,0.5);
 }
 
 .today-btn {
-    padding: 8px 16px;
-    border: 1px solid var(--primary);
-    background: transparent;
-    color: var(--primary);
-    border-radius: 8px;
+    padding: 8px 18px;
+    border: 2px solid rgba(255,255,255,0.3);
+    background: rgba(255,255,255,0.1);
+    color: white;
+    border-radius: 10px;
     font-size: 0.85rem;
     font-weight: 600;
     cursor: pointer;
-    transition: all 0.15s;
+    transition: all 0.2s;
+    backdrop-filter: blur(4px);
 }
 
 .today-btn:hover {
-    background: var(--primary);
+    background: rgba(255,255,255,0.25);
+}
+
+/* Dark Mode Toggle */
+.theme-toggle {
+    width: 40px;
+    height: 40px;
+    border: 2px solid rgba(255,255,255,0.25);
+    background: rgba(255,255,255,0.1);
+    border-radius: 10px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: all 0.2s;
     color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(4px);
+}
+
+.theme-toggle:hover {
+    background: rgba(255,255,255,0.25);
 }
 
 /* Main Layout */
@@ -103,7 +153,7 @@ main {
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: auto auto;
-    gap: 20px;
+    gap: 22px;
 }
 
 /* Cards */
@@ -111,26 +161,33 @@ main {
     background: var(--card-bg);
     border-radius: var(--radius);
     box-shadow: var(--shadow);
-    padding: 20px;
+    padding: 24px;
+    border: 1px solid var(--border);
+    transition: background 0.3s, border-color 0.3s, box-shadow 0.3s;
+}
+
+.card:hover {
+    box-shadow: var(--shadow-md);
 }
 
 .card-header {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin-bottom: 16px;
+    margin-bottom: 18px;
 }
 
 .card-header h2 {
-    font-size: 1.1rem;
+    font-size: 1.15rem;
     font-weight: 700;
+    letter-spacing: -0.2px;
 }
 
 .badge {
     background: var(--primary);
     color: white;
-    padding: 2px 10px;
-    border-radius: 12px;
+    padding: 3px 12px;
+    border-radius: 20px;
     font-size: 0.75rem;
     font-weight: 600;
 }
@@ -144,17 +201,19 @@ main {
 .task-input-row {
     display: flex;
     gap: 8px;
-    margin-bottom: 12px;
+    margin-bottom: 14px;
 }
 
 .task-input-row input {
     flex: 1;
-    padding: 10px 12px;
-    border: 1px solid var(--border);
-    border-radius: 8px;
+    padding: 11px 14px;
+    border: 2px solid var(--border);
+    border-radius: var(--radius-sm);
     font-size: 0.9rem;
     outline: none;
-    transition: border-color 0.15s;
+    transition: border-color 0.2s, background 0.2s;
+    background: var(--card-bg);
+    color: var(--text);
 }
 
 .task-input-row input:focus {
@@ -162,26 +221,32 @@ main {
 }
 
 .task-input-row select {
-    padding: 10px 8px;
-    border: 1px solid var(--border);
-    border-radius: 8px;
+    padding: 11px 10px;
+    border: 2px solid var(--border);
+    border-radius: var(--radius-sm);
     font-size: 0.85rem;
     outline: none;
-    background: white;
+    background: var(--card-bg);
+    color: var(--text);
     cursor: pointer;
+    transition: border-color 0.2s;
+}
+
+.task-input-row select:focus {
+    border-color: var(--primary);
 }
 
 .add-btn {
-    width: 40px;
-    height: 40px;
+    width: 42px;
+    height: 42px;
     background: var(--primary);
     color: white;
     border: none;
-    border-radius: 8px;
-    font-size: 1.4rem;
+    border-radius: var(--radius-sm);
+    font-size: 1.5rem;
     font-weight: 300;
     cursor: pointer;
-    transition: background 0.15s;
+    transition: background 0.2s, transform 0.15s;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -189,6 +254,11 @@ main {
 
 .add-btn:hover {
     background: var(--primary-hover);
+    transform: scale(1.05);
+}
+
+.add-btn:active {
+    transform: scale(0.95);
 }
 
 .task-list {
@@ -201,6 +271,10 @@ main {
     width: 5px;
 }
 
+.task-list::-webkit-scrollbar-track {
+    background: transparent;
+}
+
 .task-list::-webkit-scrollbar-thumb {
     background: var(--border);
     border-radius: 3px;
@@ -210,19 +284,19 @@ main {
     display: flex;
     align-items: center;
     gap: 10px;
-    padding: 10px 12px;
-    border-radius: 8px;
+    padding: 11px 14px;
+    border-radius: var(--radius-sm);
     transition: background 0.15s;
-    animation: slideIn 0.2s ease;
+    animation: slideIn 0.25s ease;
 }
 
 @keyframes slideIn {
-    from { opacity: 0; transform: translateY(-6px); }
+    from { opacity: 0; transform: translateY(-8px); }
     to { opacity: 1; transform: translateY(0); }
 }
 
 .task-item:hover {
-    background: var(--bg);
+    background: var(--primary-light);
 }
 
 .task-item input[type="checkbox"] {
@@ -234,10 +308,11 @@ main {
 }
 
 .task-item .priority-dot {
-    width: 8px;
-    height: 8px;
+    width: 9px;
+    height: 9px;
     border-radius: 50%;
     flex-shrink: 0;
+    box-shadow: 0 0 0 2px var(--card-bg);
 }
 
 .task-item .priority-dot.high { background: var(--high); }
@@ -248,6 +323,7 @@ main {
     flex: 1;
     font-size: 0.9rem;
     word-break: break-word;
+    line-height: 1.4;
 }
 
 .task-item.done .task-text {
@@ -260,34 +336,42 @@ main {
     background: none;
     border: none;
     color: var(--high);
-    font-size: 1.1rem;
+    font-size: 1.2rem;
     cursor: pointer;
     padding: 2px 6px;
-    border-radius: 4px;
-    transition: opacity 0.15s;
+    border-radius: 6px;
+    transition: opacity 0.15s, background 0.15s;
 }
 
 .task-item:hover .delete-btn {
     opacity: 1;
 }
 
+.task-item .delete-btn:hover {
+    background: var(--high-bg);
+}
+
 .task-empty {
     text-align: center;
     color: var(--text-muted);
     font-size: 0.85rem;
-    padding: 20px 0;
+    padding: 24px 0;
 }
 
 /* Schedule */
 .schedule-card {
     grid-column: 2;
     grid-row: 1 / 3;
-    max-height: 680px;
+    max-height: 700px;
     overflow-y: auto;
 }
 
 .schedule-card::-webkit-scrollbar {
     width: 5px;
+}
+
+.schedule-card::-webkit-scrollbar-track {
+    background: transparent;
 }
 
 .schedule-card::-webkit-scrollbar-thumb {
@@ -303,40 +387,47 @@ main {
 .schedule-row {
     display: flex;
     border-bottom: 1px solid var(--border);
-    min-height: 48px;
+    min-height: 50px;
+    transition: background 0.15s;
 }
 
 .schedule-row:last-child {
     border-bottom: none;
 }
 
+.schedule-row:hover {
+    background: var(--primary-light);
+}
+
 .schedule-time {
-    width: 70px;
-    padding: 12px 8px;
+    width: 72px;
+    padding: 14px 8px;
     font-size: 0.78rem;
     color: var(--text-muted);
-    font-weight: 600;
+    font-weight: 700;
     flex-shrink: 0;
     text-align: right;
-    padding-right: 12px;
+    padding-right: 14px;
+    letter-spacing: 0.3px;
 }
 
 .schedule-input {
     flex: 1;
-    padding: 10px 12px;
+    padding: 12px 14px;
     border: none;
     font-size: 0.85rem;
     outline: none;
     background: transparent;
     color: var(--text);
+    transition: background 0.2s;
 }
 
 .schedule-input::placeholder {
-    color: #d1d5db;
+    color: var(--border);
 }
 
 .schedule-input:focus {
-    background: #eef2ff;
+    background: var(--primary-light);
 }
 
 .schedule-row:nth-child(even) {
@@ -352,28 +443,39 @@ main {
 .char-count {
     font-size: 0.75rem;
     color: var(--text-muted);
+    font-weight: 500;
 }
 
 #notesArea {
     width: 100%;
-    min-height: 200px;
-    padding: 12px;
-    border: 1px solid var(--border);
-    border-radius: 8px;
+    min-height: 210px;
+    padding: 14px;
+    border: 2px solid var(--border);
+    border-radius: var(--radius-sm);
     font-size: 0.9rem;
     font-family: inherit;
     resize: vertical;
     outline: none;
-    transition: border-color 0.15s;
-    line-height: 1.6;
+    transition: border-color 0.2s, background 0.2s;
+    line-height: 1.7;
+    background: var(--card-bg);
+    color: var(--text);
 }
 
 #notesArea:focus {
     border-color: var(--primary);
 }
 
+#notesArea::placeholder {
+    color: var(--text-muted);
+}
+
 /* Responsive */
 @media (max-width: 768px) {
+    .app {
+        padding: 14px;
+    }
+
     main {
         grid-template-columns: 1fr;
     }
@@ -385,5 +487,11 @@ main {
     header {
         flex-wrap: wrap;
         justify-content: center;
+        gap: 10px;
+        padding: 14px 18px;
+    }
+
+    .date-display h1 {
+        font-size: 1.2rem;
     }
 }

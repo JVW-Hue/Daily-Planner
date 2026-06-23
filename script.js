@@ -188,6 +188,26 @@
         return div.innerHTML;
     }
 
+    // --- Dark Mode ---
+    const $themeToggle = document.getElementById('themeToggle');
+    const moonIcon = '\u263E';
+    const sunIcon = '\u2600';
+
+    function applyTheme(dark) {
+        document.body.classList.toggle('dark', dark);
+        $themeToggle.innerHTML = dark ? sunIcon : moonIcon;
+        localStorage.setItem('planner_theme', dark ? 'dark' : 'light');
+    }
+
+    $themeToggle.addEventListener('click', () => {
+        applyTheme(document.body.classList.contains('dark') ? false : true);
+    });
+
+    // Restore saved theme
+    if (localStorage.getItem('planner_theme') === 'dark') {
+        applyTheme(true);
+    }
+
     // --- Load Day ---
     function loadDay() {
         renderDate();
