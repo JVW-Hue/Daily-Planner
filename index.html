@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daily Planner</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app">
+        <header>
+            <button id="prevDay" class="nav-btn" title="Previous Day">&larr;</button>
+            <div class="date-display">
+                <h1 id="currentDate"></h1>
+                <span id="dayName"></span>
+            </div>
+            <button id="nextDay" class="nav-btn" title="Next Day">&rarr;</button>
+            <button id="todayBtn" class="today-btn">Today</button>
+        </header>
+
+        <main>
+            <!-- Tasks Section -->
+            <section class="card tasks-card">
+                <div class="card-header">
+                    <h2>Tasks</h2>
+                    <span id="taskCount" class="badge">0/0</span>
+                </div>
+                <div class="task-input-row">
+                    <input type="text" id="taskInput" placeholder="Add a new task..." maxlength="120">
+                    <select id="taskPriority">
+                        <option value="low">Low</option>
+                        <option value="medium" selected>Medium</option>
+                        <option value="high">High</option>
+                    </select>
+                    <button id="addTaskBtn" class="add-btn">+</button>
+                </div>
+                <ul id="taskList" class="task-list"></ul>
+            </section>
+
+            <!-- Schedule Section -->
+            <section class="card schedule-card">
+                <div class="card-header">
+                    <h2>Schedule</h2>
+                </div>
+                <div id="scheduleGrid" class="schedule-grid"></div>
+            </section>
+
+            <!-- Notes Section -->
+            <section class="card notes-card">
+                <div class="card-header">
+                    <h2>Notes</h2>
+                    <span id="charCount" class="char-count">0 / 1000</span>
+                </div>
+                <textarea id="notesArea" placeholder="Write your notes for the day..." maxlength="1000"></textarea>
+            </section>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
